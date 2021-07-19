@@ -1,0 +1,24 @@
+{
+  "name": "twilio-test-node",
+  "version": "1.0.0",
+  "description": "it's just a Test",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderlguard/twilio-test-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexanderlguard/twilio-test-node/issues"
+  },
+  "homepage": "https://github.com/alexanderlguard/twilio-test-node#readme",
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "express": "^4.17.1",
+    "twilio": "^3.66.0"
+  }
+}
