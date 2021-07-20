@@ -59,6 +59,32 @@ app.post('/sms', (req, res) => {
                 messageHistory[clientPhoneNumber] = [ body ];
                 res.end('DONE');
             });
+        } else {
+            var messages = messageHistory[messageHistory];
+            var lastMessage = messages[messages.length - 1];
+
+            switch (body) {
+                case 'test 1':
+                    sendMessage(clientPhoneNumber, 'You haved to buy bitcoins', () => {
+                        messageHistory[clientPhoneNumber] = [ ...messages, body];
+                        res.end('DONE');
+                    });
+                    break;
+
+                case 'last':
+                    sendMessage(clientPhoneNumber, `Your last message was: ${lastMessage}`, () => {
+                        messageHistory[clientPhoneNumber] = [ ...messages, body];
+                        res.end('DONE');
+                    });
+                    break;
+            
+                default:
+                    sendMessage(clientPhoneNumber, 'We can\'t hear you', () => {
+                        messageHistory[clientPhoneNumber] = [ ...messages, body];
+                        res.end('DONE');
+                    });
+                    break;
+            }
         }
     }
 
