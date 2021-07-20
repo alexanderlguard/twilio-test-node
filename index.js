@@ -16,7 +16,7 @@ const MessagingResponse = twilio.twiml.MessagingResponse;
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
-    res.send('This is just a TEST!')
+    res.send('This is just a TEST 1!')
 });
 
 var history = {};
