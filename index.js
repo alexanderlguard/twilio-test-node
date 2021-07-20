@@ -62,7 +62,7 @@ app.post('/sms', (req, res) => {
         body: 'Hello',
         from: `${from}`,
         to: `${to}`
-      }).then(message => res.end());
+      });//.then(message => res.end());
     
 });
 
