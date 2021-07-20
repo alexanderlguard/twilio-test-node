@@ -1,10 +1,25 @@
 const express = require('express')
 const app = express()
-var port = process.env.PORT || 3000;
+
+const accountSid = 'AC5ae6684bd7945e1ad2515bde21437117';
+const authToken = '1b80f25529a2b51f03fff3d5b60005fe';
+
+const port = process.env.PORT || 3000;
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+
+
+app.post('/sms', (req, res) => {
+    const twiml = new MessagingResponse();
+  
+    twiml.message('The Robots are coming! Head for the hills!');
+  
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    res.end(twiml.toString());
+});
 
 app.listen(port, () => {
   console.log(`Test Port: ${port}`)
