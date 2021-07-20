@@ -60,7 +60,7 @@ app.post('/sms', (req, res) => {
                 res.end('DONE');
             });
         } else {
-            var messages = messageHistory[messageHistory];
+            var messages = messageHistory[clientPhoneNumber];
             var lastMessage = messages[messages.length - 1];
 
             switch (body) {
