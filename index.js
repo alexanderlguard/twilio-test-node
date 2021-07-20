@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/sms', (req, res) => {
-    let from = req.body.from;
-    let to = req.body.to;
+    let from = req.body.From;
+    let to = req.body.To;
 
     const twiml = new MessagingResponse();
   
