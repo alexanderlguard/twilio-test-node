@@ -17,14 +17,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
     client.messages.create({
-        body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
+        body: 'Hello World!!',
         from: '+18324301022',
         to: '+18312247870'
     })
     .then(message => {
         console.log(message.sid);
-        res.writeHead(200, {'Content-Type': 'text/xml'});
-        res.end('This is just a TEST 1!');
+        // res.writeHead(200, {'Content-Type': 'text/xml'});
+        res.send('This is just a TEST 1!');
     });
 });
 
