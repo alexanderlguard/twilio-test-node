@@ -35,7 +35,7 @@ var sendMessage = (to, msg, done) => {
 // --------------------------------------------------------------
 // URLS
 app.get('/', (req, res) => {
-    sendMessage('+18322247870', 'Pleas work!', () => {
+    sendMessage('+18312247870', 'Pleas work!', () => {
         res.writeHead(200, {'Content-Type': 'text/xml'});
         res.send('This is just a Test');
     });
