@@ -1,34 +1,48 @@
-// -----------------------------------------
+// --------------------------------------------------------------
+// TWILIO AUTH
 const accountSid = 'AC5ae6684bd7945e1ad2515bde21437117';
 const authToken = 'dfa4a86b64bec4978eb2ca251a8a4c50';
-
+// --------------------------------------------------------------
+// LIBS
 const express = require('express');
 const bodyParser = require('body-parser');
 const twilio = require('twilio');
-
+// --------------------------------------------------------------
+// OBJECTS
 const client = new twilio(accountSid, authToken);
-const app = express();
-
-const port = process.env.PORT || 3000;
-
 const MessagingResponse = twilio.twiml.MessagingResponse;
-
+const app = express();
+// --------------------------------------------------------------
+// SET UP
 app.use(bodyParser.urlencoded({extended: false}));
-
-app.get('/', (req, res) => {
+// --------------------------------------------------------------
+// VARS
+const port = process.env.PORT || 3000;
+var messageHistory = {};
+// --------------------------------------------------------------
+// FUNCTIONS
+var sendMessage = (to, msg, done) => {
     client.messages.create({
-        body: 'Hello World!!',
+        body: `${msg}`,
         from: '+18324301022',
-        to: '+18312247870'
+        to: `${to}`
     })
     .then(message => {
-        console.log(message.sid);
-        // res.writeHead(200, {'Content-Type': 'text/xml'});
-        res.send('This is just a TEST 1!');
+        console.log(`Message sent to ${to}`);
+        done(message);
+        // // res.writeHead(200, {'Content-Type': 'text/xml'});
+        // res.send('This is just a TEST 1!');
+    });
+}
+// --------------------------------------------------------------
+// URLS
+app.get('/', (req, res) => {
+    sendMessage('+18322247870', 'Pleas work!', () => {
+        res.send('This is just a Test');
     });
 });
 
-var history = {};
+
 
 app.post('/sms', (req, res) => {
 
@@ -79,9 +93,8 @@ app.post('/sms', (req, res) => {
     
 });
 
-
+// --------------------------------------------------------------
+// START SERVER
 app.listen(port, () => {
     console.log(`The server is working on the port ${port}`)
 });
-// -----------------------------------------
-
