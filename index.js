@@ -36,6 +36,7 @@ var sendMessage = (to, msg, done) => {
 // URLS
 app.get('/', (req, res) => {
     sendMessage('+18312247870', 'Pleas work!', () => {
+        console.log('GG');
         res.writeHead(200, {'Content-Type': 'text/xml'});
         res.send('This is just a Test');
     });
