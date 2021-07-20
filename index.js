@@ -45,12 +45,10 @@ app.get('/', (req, res) => {
 
 app.post('/sms', (req, res) => {
 
-    const twiml = new MessagingResponse();
-
-    twiml.message('The Robots are coming! Head for the hills!');
-
-    res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end(twiml.toString());
+    sendMessage('+18312247870', 'This is just a Test from I last message', () => {
+        //res.writeHead(200, {'Content-Type': 'text/xml'});
+        res.end('This is just a Test from I last message');
+    });
 
     // let from = req.body.From;
     // let to = req.body.To;
