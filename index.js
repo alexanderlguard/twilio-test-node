@@ -22,11 +22,7 @@ app.get('/', (req, res) => {
 var history = {};
 
 function sendMessage(msg, from, to) {
-    client.messages.create({
-     body: msg,
-     from: from,
-     to: to
-   });
+    
 }
 
 app.post('/sms', (req, res) => {
@@ -62,8 +58,12 @@ app.post('/sms', (req, res) => {
     // }
   
     
-    sendMessage(`TEST!`, from, to);
-    res.end();
+    client.messages.create({
+        body: 'Hello',
+        from: `${from}`,
+        to: `${to}`
+      }).then(message => res.end());
+    
 });
 
 
