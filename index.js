@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
 app.post('/sms', (req, res) => {
     let clientPhoneNumber = req.body.From;
     let to = req.body.To;
-    let body = req.body.Body;
+    let body = req.body.Body.toLowerCase();
 
     if (body === 'bye') {
         sendMessage(clientPhoneNumber, 'We hope to have been of help', () => {
@@ -64,7 +64,7 @@ app.post('/sms', (req, res) => {
             var messages = messageHistory[clientPhoneNumber];
             var lastMessage = messages[messages.length - 1];
 
-            switch (body.toLowerCase()) {
+            switch (body) {
                 case 'test 1':
                     sendMessage(clientPhoneNumber, 'You haved to buy bitcoins', () => {
                         messageHistory[clientPhoneNumber] = [ ...messages, body];
