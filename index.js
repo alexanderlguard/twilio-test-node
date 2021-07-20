@@ -21,48 +21,52 @@ app.get('/', (req, res) => {
 
 var history = {};
 
-function sendMessage(msg, from, to) {
-    
-}
-
 app.post('/sms', (req, res) => {
-    let from = req.body.From;
-    let to = req.body.To;
-    let body = req.body.Body;
 
-    // if (body === 'bye') {
-    //     //sendMessage('Bye', from, to);
-    //     history = {};
-    // }
+    const twiml = new MessagingResponse();
 
-    // if (Object.keys(history).length == 0 || !(from in history) ) { // First Message
-    //     //sendMessage('Hi', from, to);
-    //     //sendMessage(`What's the matter?`, from, to);
-    //     history[from] = [ body ]
-    // } else { // If he has a history
-    //     var messages = history[from];
-    //     var lastMessage = messages[messages.length - 1];
+    twiml.message('The Robots are coming! Head for the hills!');
 
-    //     switch (body) {
-    //         case 'test 1':
-    //             //sendMessage(`This Work!!`, from, to);
-    //             break;
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    res.end(twiml.toString());
+
+    // let from = req.body.From;
+    // let to = req.body.To;
+    // let body = req.body.Body;
+
+    // // if (body === 'bye') {
+    // //     //sendMessage('Bye', from, to);
+    // //     history = {};
+    // // }
+
+    // // if (Object.keys(history).length == 0 || !(from in history) ) { // First Message
+    // //     //sendMessage('Hi', from, to);
+    // //     //sendMessage(`What's the matter?`, from, to);
+    // //     history[from] = [ body ]
+    // // } else { // If he has a history
+    // //     var messages = history[from];
+    // //     var lastMessage = messages[messages.length - 1];
+
+    // //     switch (body) {
+    // //         case 'test 1':
+    // //             //sendMessage(`This Work!!`, from, to);
+    // //             break;
         
-    //         default:
-    //             //sendMessage(`Hello Again`, from, to);
-    //             //sendMessage(`This is your last message ${lastMessage}`, from, to);
-    //             break;
-    //     }
+    // //         default:
+    // //             //sendMessage(`Hello Again`, from, to);
+    // //             //sendMessage(`This is your last message ${lastMessage}`, from, to);
+    // //             break;
+    // //     }
 
-    //     history[from] = [ body, ...messages ]
-    // }
+    // //     history[from] = [ body, ...messages ]
+    // // }
   
     
-    client.messages.create({
-        body: 'Hello',
-        from: `${from}`,
-        to: `${to}`
-      });//.then(message => res.end());
+    // client.messages.create({
+    //     body: 'Hello',
+    //     from: `${from}`,
+    //     to: `${to}`
+    //   });//.then(message => res.end());
     
 });
 
