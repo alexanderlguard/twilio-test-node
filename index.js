@@ -54,7 +54,7 @@ app.post('/sms', (req, res) => {
             res.end('DONE');
         });
     } else {
-        if (Object.keys(messageHistory).length == 0 || !(from in messageHistory) ) { // First Message
+        if (Object.keys(messageHistory).length == 0 || !(clientPhoneNumber in messageHistory) ) { // First Message
             sendMessage(clientPhoneNumber, 'We see you\'re a new Member', () => {
                 messageHistory[clientPhoneNumber] = [ body ];
                 res.end('DONE');
