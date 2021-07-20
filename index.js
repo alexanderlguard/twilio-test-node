@@ -1,6 +1,6 @@
 // -----------------------------------------
 const accountSid = 'AC5ae6684bd7945e1ad2515bde21437117';
-const authToken = '1b80f25529a2b51f03fff3d5b60005fe';
+const authToken = 'dfa4a86b64bec4978eb2ca251a8a4c50';
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
     .then(message => {
         console.log(message.sid);
         res.writeHead(200, {'Content-Type': 'text/xml'});
-        res.send('This is just a TEST 1!');
+        res.end('This is just a TEST 1!');
     });
 });
 
