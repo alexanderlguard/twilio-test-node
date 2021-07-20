@@ -56,7 +56,7 @@ app.post('/sms', (req, res) => {
     }
   
     
-  
+    twiml.message(`Just a Test!`);
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end('All Ok!');
 });
