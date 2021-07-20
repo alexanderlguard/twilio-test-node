@@ -63,8 +63,7 @@ app.post('/sms', (req, res) => {
   
     
     sendMessage(`TEST!`, from, to);
-    res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end('All Ok!');
+    res.end();
 });
 
 
