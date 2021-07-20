@@ -21,21 +21,27 @@ app.get('/', (req, res) => {
 
 var history = {};
 
+function sendMessage(msg, from, to) {
+    client.messages.create({
+     body: msg,
+     from: from,
+     to: to
+   });
+}
+
 app.post('/sms', (req, res) => {
     let from = req.body.From;
     let to = req.body.To;
     let body = req.body.Body;
 
-    const twiml = new MessagingResponse();
-
     if (body === 'bye') {
-        twiml.message(`Goodbye!`);
+        sendMessage('Bye', from, to);
         history = {};
     }
 
     if (Object.keys(history).length == 0 || !(from in history) ) { // First Message
-        twiml.message(`Hi!`);
-        twiml.message(`What's the matter?`);
+        sendMessage('Hi', from, to);
+        sendMessage(`What's the matter?`, from, to);
         history[from] = [ body ]
     } else { // If he has a history
         var messages = history[from];
@@ -43,12 +49,12 @@ app.post('/sms', (req, res) => {
 
         switch (body) {
             case 'test 1':
-                twiml.message(`This Work!!`);
+                sendMessage(`This Work!!`, from, to);
                 break;
         
             default:
-                twiml.message(`Hello Again!`);
-                twiml.message(`This is your last message ${lastMessage}`);
+                sendMessage(`Hello Again`, from, to);
+                sendMessage(`This is your last message ${lastMessage}`, from, to);
                 break;
         }
 
@@ -56,7 +62,7 @@ app.post('/sms', (req, res) => {
     }
   
     
-    twiml.message(`Just a Test!`);
+    sendMessage(`TEST!`, from, to);
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end('All Ok!');
 });
