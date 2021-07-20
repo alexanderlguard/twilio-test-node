@@ -34,32 +34,32 @@ app.post('/sms', (req, res) => {
     let to = req.body.To;
     let body = req.body.Body;
 
-    if (body === 'bye') {
-        //sendMessage('Bye', from, to);
-        history = {};
-    }
+    // if (body === 'bye') {
+    //     //sendMessage('Bye', from, to);
+    //     history = {};
+    // }
 
-    if (Object.keys(history).length == 0 || !(from in history) ) { // First Message
-        //sendMessage('Hi', from, to);
-        //sendMessage(`What's the matter?`, from, to);
-        history[from] = [ body ]
-    } else { // If he has a history
-        var messages = history[from];
-        var lastMessage = messages[messages.length - 1];
+    // if (Object.keys(history).length == 0 || !(from in history) ) { // First Message
+    //     //sendMessage('Hi', from, to);
+    //     //sendMessage(`What's the matter?`, from, to);
+    //     history[from] = [ body ]
+    // } else { // If he has a history
+    //     var messages = history[from];
+    //     var lastMessage = messages[messages.length - 1];
 
-        switch (body) {
-            case 'test 1':
-                //sendMessage(`This Work!!`, from, to);
-                break;
+    //     switch (body) {
+    //         case 'test 1':
+    //             //sendMessage(`This Work!!`, from, to);
+    //             break;
         
-            default:
-                //sendMessage(`Hello Again`, from, to);
-                //sendMessage(`This is your last message ${lastMessage}`, from, to);
-                break;
-        }
+    //         default:
+    //             //sendMessage(`Hello Again`, from, to);
+    //             //sendMessage(`This is your last message ${lastMessage}`, from, to);
+    //             break;
+    //     }
 
-        history[from] = [ body, ...messages ]
-    }
+    //     history[from] = [ body, ...messages ]
+    // }
   
     
     sendMessage(`TEST!`, from, to);
