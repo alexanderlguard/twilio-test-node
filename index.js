@@ -35,8 +35,9 @@ var sendMessage = (to, msg, done = undefined) => {
 // --------------------------------------------------------------
 // URLS
 app.get('/', (req, res) => {
-    sendMessage('+18312247870', 'This is just a message', () => {
-        //res.writeHead(200, {'Content-Type': 'text/xml'});
+    let message = req.body.message || 'Hello world!';
+    
+    sendMessage('+18312247870', message, () => {
         res.send('This is just a Test');
     });
 });
@@ -63,7 +64,7 @@ app.post('/sms', (req, res) => {
             var messages = messageHistory[clientPhoneNumber];
             var lastMessage = messages[messages.length - 1];
 
-            switch (body) {
+            switch (body.toLowerCase()) {
                 case 'test 1':
                     sendMessage(clientPhoneNumber, 'You haved to buy bitcoins', () => {
                         messageHistory[clientPhoneNumber] = [ ...messages, body];
