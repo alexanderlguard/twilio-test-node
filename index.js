@@ -35,13 +35,13 @@ app.post('/sms', (req, res) => {
     let body = req.body.Body;
 
     if (body === 'bye') {
-        sendMessage('Bye', from, to);
+        //sendMessage('Bye', from, to);
         history = {};
     }
 
     if (Object.keys(history).length == 0 || !(from in history) ) { // First Message
-        sendMessage('Hi', from, to);
-        sendMessage(`What's the matter?`, from, to);
+        //sendMessage('Hi', from, to);
+        //sendMessage(`What's the matter?`, from, to);
         history[from] = [ body ]
     } else { // If he has a history
         var messages = history[from];
@@ -49,12 +49,12 @@ app.post('/sms', (req, res) => {
 
         switch (body) {
             case 'test 1':
-                sendMessage(`This Work!!`, from, to);
+                //sendMessage(`This Work!!`, from, to);
                 break;
         
             default:
-                sendMessage(`Hello Again`, from, to);
-                sendMessage(`This is your last message ${lastMessage}`, from, to);
+                //sendMessage(`Hello Again`, from, to);
+                //sendMessage(`This is your last message ${lastMessage}`, from, to);
                 break;
         }
 
