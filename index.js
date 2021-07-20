@@ -30,14 +30,13 @@ var sendMessage = (to, msg, done) => {
     .then(message => {
         console.log(`Message sent to ${to}`);
         done(message);
-        // // res.writeHead(200, {'Content-Type': 'text/xml'});
-        // res.send('This is just a TEST 1!');
     });
 }
 // --------------------------------------------------------------
 // URLS
 app.get('/', (req, res) => {
     sendMessage('+18322247870', 'Pleas work!', () => {
+        res.writeHead(200, {'Content-Type': 'text/xml'});
         res.send('This is just a Test');
     });
 });
