@@ -35,10 +35,10 @@ var sendMessage = (to, msg, done = undefined) => {
 // --------------------------------------------------------------
 // URLS
 app.get('/', (req, res) => {
-    let message = req.body.message || 'Hello world!';
+    let message = req.query.message || 'Hello world!';
     
     sendMessage('+18312247870', message, () => {
-        res.send('This is just a Test');
+        res.send('This is just a Test to send message');
     });
 });
 
