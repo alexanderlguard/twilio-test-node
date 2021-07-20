@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
     })
     .then(message => {
         console.log(message.sid);
+        res.writeHead(200, {'Content-Type': 'text/xml'});
         res.send('This is just a TEST 1!');
     });
 });
