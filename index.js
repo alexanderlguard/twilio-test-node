@@ -3,7 +3,7 @@ const accountSid = 'AC5ae6684bd7945e1ad2515bde21437117';
 const authToken = '1b80f25529a2b51f03fff3d5b60005fe';
 
 const express = require('express');
-const bodyParser = require('bodyParser');
+const bodyParser = require('body-parser');
 const twilio = require('twilio');
 
 const client = new twilio(accountSid, authToken);
