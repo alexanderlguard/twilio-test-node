@@ -16,8 +16,6 @@ const MessagingResponse = twilio.twiml.MessagingResponse;
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
-    res.send('This is just a TEST 1!');
-
     client.messages.create({
         body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
         from: '++18324301022',
@@ -25,6 +23,7 @@ app.get('/', (req, res) => {
     })
     .then(message => console.log(message.sid));
 
+    res.send('This is just a TEST 1!');
 });
 
 var history = {};
