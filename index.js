@@ -21,7 +21,7 @@ const port = process.env.PORT || 3000;
 var messageHistory = {};
 // --------------------------------------------------------------
 // FUNCTIONS
-var sendMessage = (to, msg, done) => {
+var sendMessage = (to, msg, done = undefined) => {
     client.messages.create({
         body: `${msg}`,
         from: '+18324301022',
@@ -29,7 +29,7 @@ var sendMessage = (to, msg, done) => {
     })
     .then(message => {
         console.log(`Message sent to ${to}`);
-        done(message);
+        if (done !== undefined) done(message);
     });
 }
 // --------------------------------------------------------------
@@ -44,15 +44,18 @@ app.get('/', (req, res) => {
 
 
 app.post('/sms', (req, res) => {
+    let clientPhoneNumber = req.body.From;
+    let to = req.body.To;
+    let body = req.body.Body;
 
-    sendMessage('+18312247870', 'This is just a Test from I last message', () => {
+
+    sendMessage('+18312247870', 'This is just a Test from a last message', () => {
         //res.writeHead(200, {'Content-Type': 'text/xml'});
-        res.end('This is just a Test from I last message');
+        sendMessage('+18312247870', 'This is just a Test but it\'s the second part', () => {
+            //res.writeHead(200, {'Content-Type': 'text/xml'});
+            res.end('DONE');
+        });
     });
-
-    // let from = req.body.From;
-    // let to = req.body.To;
-    // let body = req.body.Body;
 
     // // if (body === 'bye') {
     // //     //sendMessage('Bye', from, to);
