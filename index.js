@@ -1,7 +1,7 @@
 // --------------------------------------------------------------
 // TWILIO AUTH
 const accountSid = 'AC5ae6684bd7945e1ad2515bde21437117';
-const authToken = 'dfa4a86b64bec4978eb2ca251a8a4c50';
+const authToken = '94ac7336c943588bc44c4cb810b89c8a';
 // --------------------------------------------------------------
 // LIBS
 const express = require('express');
@@ -41,8 +41,6 @@ app.get('/', (req, res) => {
         res.send('This is just a Test to send message');
     });
 });
-
-
 
 app.post('/sms', (req, res) => {
     let clientPhoneNumber = req.body.From;
